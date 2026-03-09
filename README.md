@@ -26,6 +26,7 @@ You can install the development version of **fcsar** from GitHub:
 install.packages("remotes")
 remotes::install_github("UfukBeyaztas/fcsar")
 
+---
 
 ## 💻 Quick Start Example
 1. Generate a contaminated sample
