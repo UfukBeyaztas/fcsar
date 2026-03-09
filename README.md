@@ -25,3 +25,71 @@ You can install the development version of **fcsar** from GitHub:
 ```r
 install.packages("remotes")
 remotes::install_github("UfukBeyaztas/fcsar")
+
+
+💻 Quick Start Example
+1. Generate a contaminated sample
+library(fcsar)
+set.seed(123)
+dat <- data_generation(
+  n = 100,
+  j = 101,
+  rho = 0.5,
+  sig.e = 1,
+  m.o = 10,
+  out.p = 0.05
+)
+
+2. Fit the classical FPCA-based model
+fit_classical <- fsac_pca(
+  y = dat$y,
+  x = dat$x,
+  wei_mat = dat$w,
+  method.type = "classical"
+)
+
+3. Fit the robust FPCA-based model
+fit_robust <- fsac_pca(
+  y = dat$y,
+  x = dat$x,
+  wei_mat = dat$w,
+  method.type = "robust"
+)
+
+4. Fit the Fisher-consistent redescending model
+Andrews-loss version
+fit_andrews <- fsac_pcaM(
+  y = dat$y,
+  x = dat$x,
+  wei_mat = dat$w,
+  Type = "Andrews"
+)
+
+Danish-loss version
+fit_danish <- fsac_pcaM(
+  y = dat$y,
+  x = dat$x,
+  wei_mat = dat$w,
+  Type = "Danish"
+)
+
+5. Inspect estimated quantities
+fit_andrews$rho
+fit_danish$rho
+head(fit_andrews$fitted.values)
+
+6. Predict for new spatial units
+dat_test <- data_generation(
+  n = 50,
+  j = 101,
+  rho = 0.5,
+  sig.e = 1,
+  m.o = 10,
+  out.p = 0
+)
+
+preds <- predict_fsac(
+  object = fit_andrews,
+  xnew = dat_test$x,
+  wnew = dat_test$w
+)
