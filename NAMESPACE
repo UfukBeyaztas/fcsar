@@ -1,0 +1,16 @@
+export(data_generation)
+export(fsac_pca)
+export(fsac_pcaM)
+export(predict_fsac)
+
+importFrom(expm, sqrtm)
+importFrom(fda, create.bspline.basis, eval.basis, fd, fdPar, inprod, int2Lfd, smooth.basisPar)
+importFrom(fda.usc, fdata, inprod.fdata)
+importFrom(graphics, legend, lines)
+importFrom(MASS, ginv)
+importFrom(methods, as)
+importFrom(pcaPP, PCAproj, covPCAproj, l1median, qn)
+importFrom(stats, .getXlevels, cov, cov.wt, dchisq, dnorm, fitted, integrate,
+           lm, mahalanobis, median, model.matrix, na.omit, nlm, optimize,
+           pchisq, pnorm, qchisq, qnorm, quantile, rchisq, rnorm, runif,
+           sd, terms, coef)
