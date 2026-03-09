@@ -28,7 +28,7 @@ remotes::install_github("UfukBeyaztas/fcsar")
 
 ---
 
-## 💻 Quick Start Example
+💻 Quick Start Example
 1. Generate a contaminated sample
 library(fcsar)
 set.seed(123)
